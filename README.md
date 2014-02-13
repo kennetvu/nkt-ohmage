@@ -10,3 +10,14 @@
 
 
 ##Idea's
+
+
+
+
+###TODO: Nodejs ohmage client
+- Authenticate on startup using me module
+- Create a config file which the app can load settings from e.g URL/serverinfo
+
+
+###Idea: Nodejs Ohmage client
+- Set user settings in config file. 
