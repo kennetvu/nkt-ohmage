@@ -1,5 +1,15 @@
 #Readme for our github repo
 
+#TODO: deadline - 24/02 - 28/02
+- D3
+	- Graf
+	- Bar chart
+- Parsing av data
+- Interface for upload
+	- Lagre filen
+- Backup SQL
+- Node Module som gjør sql operasjoner?
+- Hovedside (Login/dashboard)
 
 ##TODO
 - Visualization app
