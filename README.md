@@ -1,6 +1,6 @@
 #Readme for our github repo
 
-#TODO: deadline - 24/02 - 28/02
+##TODO: deadline - 24/02 - 28/02
 - D3
 	- Graf
 	- Bar chart
