@@ -23,6 +23,7 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.use(app.router);
+
 if(app.get('env') == 'production'){
 	app.use('/nkt-ohmage',express.static(path.join(__dirname, 'public')));
 }
