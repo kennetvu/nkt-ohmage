@@ -4,5 +4,6 @@
  */
 
 exports.index = function(req, res){
+	console.log(req.url);
   res.render('index', { title: 'Nkt-ohmage' });
 };
