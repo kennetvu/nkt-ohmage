@@ -23,12 +23,12 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.enable('trust proxy');
+app.use(app.router);
 if(app.get('env') == 'production'){
 	//app.use('/nkt-ohmage',app.router);
 	app.use('/nkt-ohmage', express.static(path.join(__dirname, 'public')));
 }
 else if (app.get('env') == 'development'){
-	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 }
 
