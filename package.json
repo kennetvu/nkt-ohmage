@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js"
-  },
-  "dependencies": {
-    "express": "3.4.7",
-    "jade": "latest",
-    "formidable": "latest",
-    "nodemon": "latest"
+    },
+    "dependencies": {
+      "express": "3.4.7",
+      "jade": "latest",
+      "formidable": "latest",
+      "nodemon": "latest",
+      "string": "~1.8.0",
+      "restler": "~3.2.0",
+      "mysql": "~2.1.0"
+    }
   }
-}

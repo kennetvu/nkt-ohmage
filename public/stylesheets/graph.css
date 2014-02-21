@@ -1,0 +1,7 @@
+body {
+  font: 10px sans-serif;
+}
+
+#chart svg{
+	height:600px;
+}

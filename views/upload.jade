@@ -1,0 +1,16 @@
+extends mainLayout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+	div.row
+		div.col-md-12
+			div.panel.panel-primary
+				div.panel-heading
+					h3.panel-title File Uploader
+				div.panel-body 
+					form(action="/uploadFile", method="post", enctype="multipart/form-data")
+						input(type='file', name="datafile")
+						<br/>
+						input(type='submit', class="btn-primary", value="Submit")
