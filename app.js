@@ -25,7 +25,7 @@ app.use(express.session());
 app.enable('trust proxy');
 if(app.get('env') == 'production'){
 	app.use('/nkt-ohmage',app.router);
-	app.use('/nkt-ohmage', express.static(path.join(__dirname, 'public')));
+	//app.use('/nkt-ohmage', express.static(path.join(__dirname, 'public')));
 }
 else if (app.get('env') == 'development'){
 	app.use(app.router);
