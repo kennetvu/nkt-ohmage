@@ -19,6 +19,10 @@ exports.loginpage = function(req,res) {
 	res.render('loginpage');
 };
 
+exports.charts = function(req,res) {
+	res.render('charts');
+};
+
 exports.login = function(req, res) {
 	/*res.writeHead(200, {
 		'Content-Type': 'text/plain'

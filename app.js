@@ -44,6 +44,7 @@ app.get('/', routes.index);
 app.get('/linechart', routes.linechart);
 app.get('/mainpage', routes.mainpage);
 app.get('/loginpage', routes.loginpage);
+app.get('/charts', routes.charts);
 app.post('/login', routes.login);
 
 app.get('/upload', routesUpload.index);
