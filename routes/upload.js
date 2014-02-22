@@ -10,7 +10,6 @@ exports.upload = function(req,res){
 	var incomingForm = req.files;
 	//console.log(incomingForm);
 
-
 	form.uploadDir="./uploads/";
 	form.keepExtensions = true;
 	form.parse(req, function(err, fields, files) {

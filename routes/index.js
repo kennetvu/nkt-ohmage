@@ -24,9 +24,7 @@ exports.charts = function(req,res) {
 };
 
 exports.login = function(req, res) {
-	/*res.writeHead(200, {
-		'Content-Type': 'text/plain'
-	});*/
+	
 	var userName = req.body.username;
 	var passWord = req.body.password;
 
@@ -34,10 +32,14 @@ exports.login = function(req, res) {
 
 	util.on('doneAuth', function(data) {
 		if(data.result == 'failure') {
+			res.writeHead(200, {
+				'Content-Type': 'text/plain'
+			});
 			res.write('Wrong username or password. Please retry!');
 			res.end();
 		}
 		else {
+			res.end();
 			/*res.write("You are now logged in as: " + userName);
 			res.write("\nToken: " + data.token);
 			res.end();*/
