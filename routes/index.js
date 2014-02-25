@@ -4,27 +4,37 @@
 var util = require('../lib/ohmageUtilities.js');
 
 exports.index = function(req, res) {
-	res.render('index', { title: 'Express' });
-};
-
-exports.linechart = function(req,res) {
-	res.render('linechart');
+	if(req.session.authenticated == true) {
+		console.log(req.session.authenticated);
+		res.render('mainpage');
+	}
+	else {
+		console.log(req.session.authenticated);
+		res.render('');
+	}
 };
 
 exports.mainpage = function(req,res) {
-	res.render('mainpage');
-};
-
-exports.loginpage = function(req,res) {
-	res.render('loginpage');
+	if(req.session.authenticated == false || req.session.authenticated == undefined) {
+		console.log("Not authenticated");
+		res.redirect('');
+	}
+	else {
+		res.render('mainpage');
+	}
 };
 
 exports.charts = function(req,res) {
-	res.render('charts');
+	if(req.session.authenticated == false || req.session.authenticated == undefined) {
+		console.log("Not authenticated");
+		res.redirect('');
+	}
+	else {
+		res.render('charts');
+	}
 };
 
 exports.login = function(req, res) {
-	
 	var userName = req.body.username;
 	var passWord = req.body.password;
 
@@ -32,19 +42,15 @@ exports.login = function(req, res) {
 
 	util.on('doneAuth', function(data) {
 		if(data.result == 'failure') {
-			res.writeHead(200, {
-				'Content-Type': 'text/plain'
-			});
-			res.write('Wrong username or password. Please retry!');
-			res.end();
+			res.redirect('');
 		}
 		else {
+			req.session.auth_token = data.token;
+			req.session.authenticated = true;
+			
+			res.redirect('mainpage');
 			res.end();
-			/*res.write("You are now logged in as: " + userName);
-			res.write("\nToken: " + data.token);
-			res.end();*/
-			res.render('mainpage');
+
 		}
 	});
 };
-

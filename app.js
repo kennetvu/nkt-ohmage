@@ -6,6 +6,7 @@
  var express = require('express');
  var routes = require('./routes');
  var routesUpload = require('./routes/upload.js');
+ var util = require('./lib/ohmageUtilities.js');
  var http = require('http');
  var path = require('path');
 
@@ -20,12 +21,11 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
+app.use(express.cookieParser('NKTPMS2014'));
 app.use(express.session());
 app.enable('trust proxy');
 app.use(app.router);
 if(app.get('env') == 'production'){
-	//app.use('/nkt-ohmage',app.router);
 	app.use('/nkt-ohmage', express.static(path.join(__dirname, 'public')));
 }
 else if (app.get('env') == 'development'){
@@ -41,11 +41,22 @@ console.log(app.get('env'));
 console.log(app.settings.env);
 
 app.get('/', routes.index);
-app.get('/linechart', routes.linechart);
 app.get('/mainpage', routes.mainpage);
-app.get('/loginpage', routes.loginpage);
 app.get('/charts', routes.charts);
 app.post('/login', routes.login);
+app.get('/logout', function(req, res) {
+	util.logout(req.session.auth_token);
+
+	util.on('loggedOut', function(data) {
+		if(data.result == 'success') {
+			req.session.auth_token = null;
+			req.session.authenticated = null;
+			console.log("You've been logged out!");
+			res.redirect('');
+			res.end();
+		}
+	});
+});
 
 app.get('/upload', routesUpload.index);
 app.post('/uploadFile', routesUpload.upload);
