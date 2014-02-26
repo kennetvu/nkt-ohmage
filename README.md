@@ -29,3 +29,5 @@
 - Hovedside (Login/dashboard)
 - Authenticate on startup using me module
 - Create a config file which the app can load settings from e.g URL/serverinfo
+- Client-states (sessions)
+- Loging out of ohmage + destroying auth token for the user
